@@ -1,5 +1,5 @@
 # pendu
-Participants : MOMTAZ Ilies, DIAKITé Isaac et ??? Fouad
+Participants : MOMTAZ Ilies, DIAKITé Isaac et Serkoukou Fouad
 
 Voici notre projet de IN201 qui portait sur la réalisation du jeu pendu
 
