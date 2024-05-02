@@ -1,32 +1,67 @@
-
-
 from random import randint
 import tkinter as tk
 from tkinter import messagebox
 import tkinter.font as font
 
+fenetre_menu = tk.Tk()
+fenetre_menu.title("MENU DU JEU")
+fenetre_menu.attributes('-fullscreen', True)
+fenetre_menu.configure(bg="black")
+fenetre_menu.grid_columnconfigure(0, weight=1)
+fenetre_menu.grid_columnconfigure(1, weight=1)
+fenetre_menu.grid_columnconfigure(2, weight=1)
+fenetre_menu.grid_columnconfigure(3, weight=1)
+fenetre_menu.grid_rowconfigure(1, weight=1)
+fenetre_menu.grid_rowconfigure(2, weight=1)
+fenetre_menu.grid_rowconfigure(3, weight=1)
+fenetre_menu.grid_rowconfigure(4, weight=1)
+fenetre_menu.grid_rowconfigure(5, weight=1)
+font_label = font.Font(size=30)
+font_bouton = font.Font(size=20)
+font_label2 = font.Font(size=20)
+difficulte = 0
 
 def aide():
-        
-        regles_jeu = tk.Toplevel()
-        regles_jeu.geometry("700x175")
-        regles_jeu.title("Regles du jeu")
-        zone_texte1 = tk.Label (regles_jeu, text = "Le jeu du pendu est un jeu de société où les joueurs doivent deviner un mot en appuyant sur les lettres. Les règles jeu sont:")
-        zone_texte2= tk.Label (regles_jeu, text = "1. Les joueurs doivent deviner le mot en proposant des lettres une à une.")
-        zone_texte3 = tk.Label (regles_jeu, text = "2. Si une lettre proposée se trouve dans le mot, elle est révélée dans le mot.")
-        zone_texte4= tk.Label (regles_jeu, text = "3. Si la lettre proposée n'est pas dans le mot, une partie du dessin d’un pendu apparait.")
-        zone_texte5 = tk.Label (regles_jeu, text = "4. Les joueurs ont le droit a 10 propositions fausses avant que le dessin ne soit complet.")
-        zone_texte6 = tk.Label (regles_jeu, text = "5. Si le dessin du pendu est entier avant que le mot ne soit deviné, la partie est perdu.")
-        zone_texte1.grid(sticky="nw")
-        zone_texte2.grid(sticky="nw")
-        zone_texte3.grid(sticky="nw")
-        zone_texte4.grid(sticky="nw")
-        zone_texte5.grid(sticky="nw")
-        zone_texte6.grid(sticky="nw")
-        boutton_compris=tk.Button(regles_jeu, text="J'ai compris", command= regles_jeu.destroy)
-        boutton_compris.grid(sticky="s")
+    regles_jeu = tk.Toplevel()
+    regles_jeu.title("LES REGLES DU JEU")
+    regles_jeu.attributes('-fullscreen', True)
+    regles_jeu.configure(bg="black")
+    regles_jeu.grid_columnconfigure(0, weight=1)
+    regles_jeu.grid_columnconfigure(1, weight=1)
+    regles_jeu.grid_columnconfigure(2, weight=1)
+    regles_jeu.grid_columnconfigure(3, weight=1)
+    regles_jeu.grid_rowconfigure(1, weight=1)
+    regles_jeu.grid_rowconfigure(2, weight=1)
+    regles_jeu.grid_rowconfigure(3, weight=1)
+    regles_jeu.grid_rowconfigure(4, weight=1)
+    regles_jeu.grid_rowconfigure(5, weight=1)
 
-        regles_jeu.mainloop
+    # Zone de texte avec les règles du jeu
+    regles = [
+        "LE JEU DU PENDU EST UN JEU DE SOCIÉTÉ OÙ LES JOUEURS DOIVENT DEVENIR UN MOT EN APPUYANT SUR LES LETTRES.",
+
+        "1. LES JOUEURS DOIVENT DEVENIR LE MOT EN PROPOSANT DES LETTRES UNE À UNE.",
+
+        "2. SI UNE LETTRE PROPOSÉE SE TROUVE DANS LE MOT, ELLE EST RÉVÉLÉE DANS LE MOT.",
+
+        "3. SI LA LETTRE PROPOSÉE N'EST PAS DANS LE MOT, UNE PARTIE DU DESSIN D’UN PENDU APPARAÎT.",
+
+        "4. LES JOUEURS ONT LE DROIT A 10 PROPOSITIONS FAUSSES AVANT QUE LE DESSIN NE SOIT COMPLET.",
+
+        "5. SI LE DESSIN DU PENDU EST ENTIER AVANT QUE LE MOT NE SOIT DEVINÉ, LA PARTIE EST PERDUE."
+    ]
+
+    # Affichage des règles
+    for i, regle in enumerate(regles):
+        zone_texte = tk.Label(regles_jeu, text=regle, font=("Helvetica", 15), fg="red", bg="black")
+        zone_texte.grid(row=i, column=0)
+
+    # Bouton pour fermer la fenêtre des règles
+    bouton_compris = tk.Button(regles_jeu, text="FERMER", command=regles_jeu.destroy, font=("Helvetica", 20), fg="red", bg="black")
+    bouton_compris.grid(row=3, column=1)
+
+    regles_jeu.mainloop()
+
 
 def parse_line( ligne , sep, colonne, type) :
     li = ligne.split(sep)
@@ -39,21 +74,6 @@ chrge = False
 
 jeu = False
 
-fenetre_menu = tk.Tk()
-fenetre_menu.geometry("800x500+400+200")
-fenetre_menu.grid_columnconfigure(0, weight=1)
-fenetre_menu.grid_columnconfigure(1, weight=1)
-fenetre_menu.grid_columnconfigure(2, weight=1)
-fenetre_menu.grid_columnconfigure(3, weight=1)
-fenetre_menu.grid_rowconfigure(1, weight=1)
-fenetre_menu.grid_rowconfigure(2, weight=1)
-fenetre_menu.grid_rowconfigure(3, weight=1)
-fenetre_menu.grid_rowconfigure(4, weight=1)
-fenetre_menu.grid_rowconfigure(5, weight=1)
-font_label = font.Font(size=20)
-font_bouton = font.Font(size=15)
-font_label2 = font.Font(size=16)
-difficulte = 0
 
 def je(n = None):
     global difficulte
@@ -71,33 +91,38 @@ def mots(liste):
 
 
 score = 0
-Label_1 = tk.Label(fenetre_menu, text="Jeu du Pendu", fg = "black")
+Label_1 = tk.Label(fenetre_menu, text=" JEU DU PENDU ", fg = "black", bg="red")
 Label_1['font'] = font_label
-Label_2 = tk.Label(fenetre_menu, text="Difficulté :")
+Label_2 = tk.Label(fenetre_menu, text="DIFFICULTÉ :", bg="red")
 Label_2['font'] = font_label2
 
 
-scroller=tk.Scale(fenetre_menu ,from_=0, to=8, orient="horizontal")
+scroller=tk.Scale(fenetre_menu ,from_=0, to=8, orient="horizontal", bg="red")
 
 
-bouton_aide= tk.Button(fenetre_menu, text="Aide", command=aide, bg="red")
-bouton_aide['font'] = font_bouton
-bouton_aide.grid(sticky="nw")
-bouton_jouer = tk.Button(fenetre_menu, text="Jouer", command=lambda : je())
-bouton_quitter = tk.Button(fenetre_menu, text="Quitter", command=lambda : je(1))
+bouton_jouer = tk.Button(fenetre_menu, text="JOUER", command=lambda : je(), bg="red")
+bouton_quitter = tk.Button(fenetre_menu, text="QUITTER", command=lambda : je(1), bg="red")
+bouton_aide= tk.Button(fenetre_menu, text="AIDE", command=aide, bg="red")
+
 bouton_jouer['font'] = font_bouton
 bouton_quitter['font'] = font_bouton
+bouton_aide['font'] = font_bouton
 
 
-Label_1.grid(row = 1, column = 1)
-bouton_jouer.grid(row = 4, column = 1)
-bouton_quitter.grid(row = 5, column = 3)
+Label_1.place(relx=0.5, rely=0.2, anchor=tk.CENTER)
+bouton_jouer.place(relx=0.5, rely=0.4, anchor=tk.CENTER)
+bouton_quitter.place(relx=0.5, rely=0.6, anchor=tk.CENTER)
+bouton_aide.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
-Label_2.grid(row=5, column=0)
-scroller.grid(row=5, column=1)
+Label_2.place(relx=0.3, rely=0.8, anchor=tk.CENTER)
+scroller.place(relx=0.5, rely=0.8, anchor=tk.CENTER)
 
             
 fenetre_menu.mainloop()
+
+#------------------------------------------------------------------------------
+
+#------------------------------------------------------------------------------
 
 
 
@@ -123,6 +148,10 @@ while jeu == True:
     LISTE_11_LETTREETPLUS = [ "BACCALAUREAT", "ABRACADABRA", "FRANCOPHILE", "PANDEMONIUM", "CHLOROPHYLLE" , "CONSENTEMENT" , "METALLURGIE" , "METAMORPHOSE", "MONTGOLFIERE", "KALEIDOSCOPE", "CONQUISTADOR", "CONSPIRATEUR", "RHODODENDRON", "QUALIFICATION", "PROTOZOAIRE", "QUADRILATERE", "ZYGOMATIQUE", "SORCELLERIE", "BELLIGERANT"]
     
 
+#------------------------------------------------------------------------------
+#------------------------------------------------------------------------------
+
+
     liste_liste= [LISTE_3_LETTRES,LISTE_4_LETTRES,LISTE_4_LETTRES,LISTE_6_LETTRES,LISTE_7_LETTRES,LISTE_8_LETTRES,LISTE_9_LETTRES,LISTE_10_LETTRES,LISTE_11_LETTREETPLUS]
     def choisirliste(liste,entier):
        return liste[entier]
@@ -130,15 +159,10 @@ while jeu == True:
     
     liste = choisirliste(liste_liste, difficulte)
 
-
     if chrge:
         mot = mote
     else:
         mot = mots(liste)
-
-    
-    
-
     
     print(mot)
 
@@ -166,33 +190,37 @@ while jeu == True:
         if erreur<10:
             mot1 = mot1.upper()
             if mot == mot1:
-                messagebox.showinfo(fenetre,message="Vous avez gagné !")
-                fenetre.destroy()
+                gg3()
             else:
                 erreur+=1
                 creer_lignes(liste_ligne, erreur, canvas_personnage)
         else:
-            messagebox.showinfo(fenetre,message="Vous avez perdu {mot}!")
-            fenetre.destroy()
+            lose2()
 
+
+#------------------------------------------------------------------------------
+#------------------------------------------------------------------------------
+#------------------------------------------------------------------------------
 
 
     fenetre = tk.Tk()
-    fenetre.title("pendu")
-    fenetre.geometry("820x555+400+200")
+    fenetre.title("Jeu du Pendu")
+    fenetre.attributes('-fullscreen', True)
+    fenetre.configure(bg="black")
+    font_label22 = font.Font(size=15)
 
     mot_pointille = tiret()
 
-    canvas_personnage = tk.Canvas(fenetre, width=500, height=400, bg="cyan")
+    canvas_personnage = tk.Canvas(fenetre, width=500, height=400, bg="red")
 
     lettre_deja_donne = []
     lettre_deja_donne2 = []
-    label_erreur = tk.Label(fenetre, text="Vous avez fait "+str(erreur)+" erreur(s)")
-    label_lettre_deja_utilise = tk.Label(fenetre, text="Vous n'avez utilisé aucune lettre : ")
+    label_erreur = tk.Label(fenetre, text="Vous avez fait "+str(erreur)+" erreur(s)", font=("Helvetica", 20), bg="red")
+    label_lettre_deja_utilise = tk.Label(fenetre, text="Vous n'avez utilisé aucune lettre ", font=("Helvetica", 20), bg="red")
 
-    entre = tk.Entry(fenetre,width=10,font = ("helvetica", "10"))
+    entre = tk.Entry(fenetre,width=10, font=("Helvetica", 20), bg="red")
 
-    button_pour_mot = tk.Button(fenetre, text="Deviner le mot ?", command= lambda:deviner_le_mt(entre.get()))
+    button_pour_mot = tk.Button(fenetre, text="Deviner le mot ?", command= lambda:deviner_le_mt(entre.get()), font=("Helvetica", 20), bg="red")
 
     reussite = 0
     label_score = tk.Label(fenetre, text = "Score : "+str(score))
@@ -204,18 +232,98 @@ while jeu == True:
         cdc = ''
         for lettre in lettre_deja_donne2:
             cdc = cdc + lettre + ", " 
-        label_lettre_deja_utilise.config(text="Vous avez utilisé les lettres : \n "+cdc)
+        label_lettre_deja_utilise.config(text="Vous avez utilisé les lettres : "+cdc, font=("Helvetica", 20), bg="red")
 
     def change_label_erreur():
         global erreur
         global score
         label_erreur.config(text="Vous avez fait "+str(erreur)+" erreur(s)")
-        label_score.config(text="Score : "+str(score))
+        label_score.config(text="Score : "+str(score), font=("Helvetica", 20), bg="red")
         fenetre.after(10, change_label_erreur)
 
     change_label_erreur()
 
+    def gg3():
+        agagner = tk.Toplevel()
+        agagner.title("GAGNÉ")
+        agagner.attributes('-fullscreen', True)
+        agagner.configure(bg="black")
+        agagner.grid_columnconfigure(0, weight=1)
+        agagner.grid_columnconfigure(1, weight=1)
+        agagner.grid_columnconfigure(2, weight=1)
+        agagner.grid_columnconfigure(3, weight=1)
+        agagner.grid_rowconfigure(1, weight=1)
+        agagner.grid_rowconfigure(2, weight=1)
+        agagner.grid_rowconfigure(3, weight=1)
+        agagner.grid_rowconfigure(4, weight=1)
+        agagner.grid_rowconfigure(5, weight=1)
 
+        # Zone de texte avec les règles du jeu
+        rgg2 = [
+            "                                                                               ",
+
+            "                                                                               ",
+
+            "                                                                             ",
+
+            "                         VOUS AVEZ GAGNÉ !!!                                 ",
+
+            "                                                                                       ",
+
+            "                                                                                     "
+        ]
+
+        # Affichage des règles
+        for i, regle in enumerate(rgg2):
+            zone_texte = tk.Label(agagner, text=regle, font=("Helvetica", 30), fg="red", bg="black")
+            zone_texte.grid(row=i, column=0)
+
+        # Bouton pour fermer la fenêtre des règles
+        bouton_fermergg = tk.Button(agagner, text="FERMER", command=fenetre.destroy, font=("Helvetica", 20), fg="red", bg="black")
+        bouton_fermergg.grid(row=3, column=1)
+    
+        agagner.mainloop()
+
+    def lose2():
+        lose2 = tk.Toplevel()
+        lose2.title("PERDU")
+        lose2.attributes('-fullscreen', True)
+        lose2.configure(bg="black")
+        lose2.grid_columnconfigure(0, weight=1)
+        lose2.grid_columnconfigure(1, weight=1)
+        lose2.grid_columnconfigure(2, weight=1)
+        lose2.grid_columnconfigure(3, weight=1)
+        lose2.grid_rowconfigure(1, weight=1)
+        lose2.grid_rowconfigure(2, weight=1)
+        lose2.grid_rowconfigure(3, weight=1)
+        lose2.grid_rowconfigure(4, weight=1)
+        lose2.grid_rowconfigure(5, weight=1)
+
+        # Zone de texte avec les règles du jeu
+        rl2 = [
+            "                                                                               ",
+
+            "                                                                               ",
+
+            "                                                                             ",
+
+            "                         VOUS AVEZ PERDU !!!                                 ",
+
+            "                                                                                       ",
+
+            "                                                                                     "
+        ]
+
+        # Affichage des règles
+        for i, regle in enumerate(rl2):
+            zone_texte = tk.Label(lose2, text=regle, font=("Helvetica", 30), fg="red", bg="black")
+            zone_texte.grid(row=i, column=0)
+
+        # Bouton pour fermer la fenêtre des règles
+        bouton_fermergg = tk.Button(lose2, text="FERMER", command=fenetre.destroy, font=("Helvetica", 20), fg="red", bg="black")
+        bouton_fermergg.grid(row=3, column=1)
+    
+        lose2.mainloop()
 
 
     liste_ligne=[[100,400,400,400],[150,400,150,150],[150,150,300,150],[200,150,150,200],[300,150,300,200],[325,250,275,200],[ 300,250,300,300],[300,275,325,275],[275,275,325,275],   [300,300,325,320],[300,300,275,320]]
@@ -234,7 +342,7 @@ while jeu == True:
     for i in range(len(mot_pointille)):
         mot_pointille_shw = ' '+mot_pointille[i]+mot_pointille_shw
 
-    label_pointille = tk.Label(fenetre, text=str(mot_pointille_shw))
+    label_pointille = tk.Label(fenetre, text=str(mot_pointille_shw), font=("Helvetica", 30), bg="red")
 
     def change_label_pointille(mot):
         mot_pointille_shw = ""
@@ -249,25 +357,7 @@ while jeu == True:
             l_rien.append(mot[i])
             nb_lettre+=1
 
-    def rejouer(ent,fen):
-        global jeu
-        if ent == 1:
-            jeu = True
-        else: jeu = False
-        fen.destroy()
-
-    fenetre.grid_rowconfigure(13, weight=1)
-
-
-    def sauvegarder():
-        global mot
-        global score
-        path = "C:/Users/Administrateur/Desktop/save.csv"
-        mode = "w"
-        csv_save = open(path, mode)
-        csv_save.write(mot+","+str(score)+"\n")
-        csv_save.close()
-    
+    fenetre.grid_rowconfigure(30, weight=1)
     
     def indications():
         global mot
@@ -277,9 +367,50 @@ while jeu == True:
             indice_rand = randint(0,len(mot)-1)
             lettre_rand = mot[indice_rand]
         bouton_indication.grid_forget()
-        messagebox.showinfo(fenetre,message="Dans le mot, il y a la lettre, "+str(lettre_rand))
+
+        indications = tk.Toplevel()
+        indications.title("PERDU")
+        indications.attributes('-fullscreen', True)
+        indications.configure(bg="black")
+        indications.grid_columnconfigure(0, weight=1)
+        indications.grid_columnconfigure(1, weight=1)
+        indications.grid_columnconfigure(2, weight=1)
+        indications.grid_columnconfigure(3, weight=1)
+        indications.grid_rowconfigure(1, weight=1)
+        indications.grid_rowconfigure(2, weight=1)
+        indications.grid_rowconfigure(3, weight=1)
+        indications.grid_rowconfigure(4, weight=1)
+        indications.grid_rowconfigure(5, weight=1)
+
+        # Zone de texte avec les règles du jeu
+        ind2 = [
+            "                                                                               ",
+
+            "                                                                               ",
+
+            "                                                                             ",
+
+            "                   DANS LE MOT, IL Y  LA LETTRE "+str(lettre_rand)                                ,
+
+            "                                                                                       ",
+
+            "                                                                                     "
+        ]
+
+        # Affichage des règles
+        for i, regle in enumerate(ind2):
+            zone_texte = tk.Label(indications, text=regle, font=("Helvetica", 30), fg="red", bg="black")
+            zone_texte.grid(row=i, column=0)
+
+        # Bouton pour fermer la fenêtre des règles
+        bouton_fermergg = tk.Button(indications, text="FERMER", command=indications.destroy, font=("Helvetica", 20), fg="red", bg="black")
+        bouton_fermergg.grid(row=3, column=1)
+    
+        indications.mainloop()
+
+
         
-    bouton_indication = tk.Button(fenetre, command = indications,text="Indice pour le mot")
+    bouton_indication = tk.Button(fenetre, command = indications,text="Indice pour le mot", font=("Helvetica", 20), bg="red")
 
     def lettre_dans_le_mot_ou_erreur(lettre):
         global mot
@@ -359,8 +490,7 @@ while jeu == True:
                 #print(mot)
         
             if reussite == nb_lettre:
-                messagebox.showinfo(fenetre,message="Vous avez gagné !")
-                fenetre.destroy()
+                gg3()
         
         else:
             
@@ -371,93 +501,264 @@ while jeu == True:
                 creer_lignes(liste_ligne, erreur, canvas_personnage)
                 score += 1
             if erreur >= 11:
-                messagebox.showinfo(fenetre,message="Vous avez perdu !")
-                fenetre.destroy()
+                lose2()
 
 
 
             
-    boutonA=tk.Button(fenetre,text="A",command=lambda : lettre_dans_le_mot_ou_erreur("A"))
-    boutonB=tk.Button(fenetre,text="B",command=lambda : lettre_dans_le_mot_ou_erreur("B"))
-    boutonC=tk.Button(fenetre,text="C",command=lambda : lettre_dans_le_mot_ou_erreur("C"))
-    boutonD=tk.Button(fenetre,text="D",command=lambda : lettre_dans_le_mot_ou_erreur("D"))
-    boutonE=tk.Button(fenetre,text="E",command=lambda : lettre_dans_le_mot_ou_erreur("E"))
-    boutonF=tk.Button(fenetre,text="F",command=lambda : lettre_dans_le_mot_ou_erreur("F"))
-    boutonG=tk.Button(fenetre,text="G",command=lambda : lettre_dans_le_mot_ou_erreur("G"))
-    boutonH=tk.Button(fenetre,text="H",command=lambda : lettre_dans_le_mot_ou_erreur("H"))
-    boutonI=tk.Button(fenetre,text="I",command=lambda : lettre_dans_le_mot_ou_erreur("I"))
-    boutonJ=tk.Button(fenetre,text="J",command=lambda : lettre_dans_le_mot_ou_erreur("J"))
-    boutonK=tk.Button(fenetre,text="K",command=lambda : lettre_dans_le_mot_ou_erreur("K"))
-    boutonL=tk.Button(fenetre,text="L",command=lambda : lettre_dans_le_mot_ou_erreur("L"))
-    boutonM=tk.Button(fenetre,text="M",command=lambda : lettre_dans_le_mot_ou_erreur("M"))
-    boutonN=tk.Button(fenetre,text="N",command=lambda : lettre_dans_le_mot_ou_erreur("N"))
-    boutonO=tk.Button(fenetre,text="O",command=lambda : lettre_dans_le_mot_ou_erreur("O"))
-    boutonP=tk.Button(fenetre,text="P",command=lambda : lettre_dans_le_mot_ou_erreur("P"))
-    boutonQ=tk.Button(fenetre,text="Q",command=lambda : lettre_dans_le_mot_ou_erreur("Q"))
-    boutonR=tk.Button(fenetre,text="R",command=lambda : lettre_dans_le_mot_ou_erreur("R"))
-    boutonS=tk.Button(fenetre,text="S",command=lambda : lettre_dans_le_mot_ou_erreur("S"))
-    boutonT=tk.Button(fenetre,text="T",command=lambda : lettre_dans_le_mot_ou_erreur("T"))
-    boutonU=tk.Button(fenetre,text="U",command=lambda : lettre_dans_le_mot_ou_erreur("U"))
-    boutonV=tk.Button(fenetre,text="V",command=lambda : lettre_dans_le_mot_ou_erreur("V"))
-    boutonW=tk.Button(fenetre,text="W",command=lambda : lettre_dans_le_mot_ou_erreur("W"))
-    boutonX=tk.Button(fenetre,text="X",command=lambda : lettre_dans_le_mot_ou_erreur("X"))
-    boutonY=tk.Button(fenetre,text="Y",command=lambda : lettre_dans_le_mot_ou_erreur("Y"))
-    boutonZ=tk.Button(fenetre,text="Z",command=lambda : lettre_dans_le_mot_ou_erreur("Z"))
+    boutonA=tk.Button(fenetre,text="A",command=lambda : lettre_dans_le_mot_ou_erreur("A"), font=("Helvetica", 15), bg="red")
+    boutonB=tk.Button(fenetre,text="B",command=lambda : lettre_dans_le_mot_ou_erreur("B"), font=("Helvetica", 15), bg="red")
+    boutonC=tk.Button(fenetre,text="C",command=lambda : lettre_dans_le_mot_ou_erreur("C"), font=("Helvetica", 15), bg="red")
+    boutonD=tk.Button(fenetre,text="D",command=lambda : lettre_dans_le_mot_ou_erreur("D"), font=("Helvetica", 15), bg="red")
+    boutonE=tk.Button(fenetre,text="E",command=lambda : lettre_dans_le_mot_ou_erreur("E"), font=("Helvetica", 15), bg="red")
+    boutonF=tk.Button(fenetre,text="F",command=lambda : lettre_dans_le_mot_ou_erreur("F"), font=("Helvetica", 15), bg="red")
+    boutonG=tk.Button(fenetre,text="G",command=lambda : lettre_dans_le_mot_ou_erreur("G"), font=("Helvetica", 15), bg="red")
+    boutonH=tk.Button(fenetre,text="H",command=lambda : lettre_dans_le_mot_ou_erreur("H"), font=("Helvetica", 15), bg="red")
+    boutonI=tk.Button(fenetre,text="I",command=lambda : lettre_dans_le_mot_ou_erreur("I"), font=("Helvetica", 15), bg="red")
+    boutonJ=tk.Button(fenetre,text="J",command=lambda : lettre_dans_le_mot_ou_erreur("J"), font=("Helvetica", 15), bg="red")
+    boutonK=tk.Button(fenetre,text="K",command=lambda : lettre_dans_le_mot_ou_erreur("K"), font=("Helvetica", 15), bg="red")
+    boutonL=tk.Button(fenetre,text="L",command=lambda : lettre_dans_le_mot_ou_erreur("L"), font=("Helvetica", 15), bg="red")
+    boutonM=tk.Button(fenetre,text="M",command=lambda : lettre_dans_le_mot_ou_erreur("M"), font=("Helvetica", 15), bg="red")
+    boutonN=tk.Button(fenetre,text="N",command=lambda : lettre_dans_le_mot_ou_erreur("N"), font=("Helvetica", 15), bg="red")
+    boutonO=tk.Button(fenetre,text="O",command=lambda : lettre_dans_le_mot_ou_erreur("O"), font=("Helvetica", 15), bg="red")
+    boutonP=tk.Button(fenetre,text="P",command=lambda : lettre_dans_le_mot_ou_erreur("P"), font=("Helvetica", 15), bg="red")
+    boutonQ=tk.Button(fenetre,text="Q",command=lambda : lettre_dans_le_mot_ou_erreur("Q"), font=("Helvetica", 15), bg="red")
+    boutonR=tk.Button(fenetre,text="R",command=lambda : lettre_dans_le_mot_ou_erreur("R"), font=("Helvetica", 15), bg="red")
+    boutonS=tk.Button(fenetre,text="S",command=lambda : lettre_dans_le_mot_ou_erreur("S"), font=("Helvetica", 15), bg="red")
+    boutonT=tk.Button(fenetre,text="T",command=lambda : lettre_dans_le_mot_ou_erreur("T"), font=("Helvetica", 15), bg="red")
+    boutonU=tk.Button(fenetre,text="U",command=lambda : lettre_dans_le_mot_ou_erreur("U"), font=("Helvetica", 15), bg="red")
+    boutonV=tk.Button(fenetre,text="V",command=lambda : lettre_dans_le_mot_ou_erreur("V"), font=("Helvetica", 15), bg="red")
+    boutonW=tk.Button(fenetre,text="W",command=lambda : lettre_dans_le_mot_ou_erreur("W"), font=("Helvetica", 15), bg="red")
+    boutonX=tk.Button(fenetre,text="X",command=lambda : lettre_dans_le_mot_ou_erreur("X"), font=("Helvetica", 15), bg="red")
+    boutonY=tk.Button(fenetre,text="Y",command=lambda : lettre_dans_le_mot_ou_erreur("Y"), font=("Helvetica", 15), bg="red")
+    boutonZ=tk.Button(fenetre,text="Z",command=lambda : lettre_dans_le_mot_ou_erreur("Z"), font=("Helvetica", 15), bg="red")
 
-    bouton_quit=tk.Button(fenetre,text='Quitter',command=lambda : fenetre.destroy())
+    bouton_quit=tk.Button(fenetre,text='QUITTER',command=lambda : fenetre.destroy(), font=("Helvetica", 20), bg="red")
 
   
-    boutonA.grid(column=0,row=10)
-    boutonB.grid(column=1,row=10)
-    boutonC.grid(column=2,row=10)
-    boutonD.grid(column=3,row=10)
-    boutonE.grid(column=4,row=10)
-    boutonF.grid(column=5,row=10)
-    boutonG.grid(column=0,row=11)
-    boutonH.grid(column=1,row=11)
-    boutonI.grid(column=2,row=11)
-    boutonJ.grid(column=3,row=11)
-    boutonK.grid(column=4,row=11)
-    boutonL.grid(column=5,row=11)
-    boutonM.grid(column=0,row=12)
-    boutonN.grid(column=1,row=12)
-    boutonO.grid(column=2,row=12)
-    boutonP.grid(column=3,row=12)
-    boutonQ.grid(column=4,row=12)
-    boutonR.grid(column=5,row=12)
-    boutonS.grid(column=0,row=13)
-    boutonT.grid(column=1,row=13)
-    boutonU.grid(column=2,row=13)
-    boutonV.grid(column=3,row=13)
-    boutonW.grid(column=4,row=13)
-    boutonX.grid(column=5,row=13)
-    boutonY.grid(column=2,row=14)
-    boutonZ.grid(column=3,row=14) 
+    boutonA.grid(column=0,row=13)
+    boutonB.grid(column=1,row=13)
+    boutonC.grid(column=2,row=13)
+    boutonD.grid(column=3,row=13)
+    boutonE.grid(column=4,row=13)
+    boutonF.grid(column=5,row=13)
+    boutonG.grid(column=0,row=16)
+    boutonH.grid(column=1,row=16)
+    boutonI.grid(column=2,row=16)
+    boutonJ.grid(column=3,row=16)
+    boutonK.grid(column=4,row=16)
+    boutonL.grid(column=5,row=16)
+    boutonM.grid(column=0,row=19)
+    boutonN.grid(column=1,row=19)
+    boutonO.grid(column=2,row=19)
+    boutonP.grid(column=3,row=19)
+    boutonQ.grid(column=4,row=19)
+    boutonR.grid(column=5,row=19)
+    boutonS.grid(column=0,row=22)
+    boutonT.grid(column=1,row=22)
+    boutonU.grid(column=2,row=22)
+    boutonV.grid(column=3,row=22)
+    boutonW.grid(column=4,row=22)
+    boutonX.grid(column=5,row=22)
+    boutonY.grid(column=2,row=25)
+    boutonZ.grid(column=3,row=25) 
+
 
     canvas_personnage.grid(row=0, column=0, rowspan=10,columnspan=6)
-    label_erreur.grid(row=0,column=7)
-    label_pointille.grid(row = 1, column=7)
-    label_lettre_deja_utilise.grid(row = 2, column=6, columnspan=3) 
-    entre.grid(row= 7, column=6)
-    bouton_indication.grid(row = 5, column=7)
-    button_pour_mot.grid(row= 7, column=7)
-    label_score.grid(row=9,column=6)
-
-    bouton_quit.grid(row=14,column=10)
+    label_erreur.grid(row=0,column=15)
+    label_pointille.grid(row = 1, column=15)
+    label_score.grid(row=5,column=15)
+    label_lettre_deja_utilise.grid(row = 15, column=15, columnspan=3) 
+    entre.grid(row= 17, column=15)
+    button_pour_mot.grid(row= 20, column=15)
+    bouton_indication.grid(row = 23, column=15)
+    bouton_quit.grid(row=8,column=30)
 
     fenetre.resizable(width = False, height = False)
 
     fenetre.mainloop()
+
+#------------------------------------------------------------------------------
+#------------------------------------------------------------------------------
+#------------------------------------------------------------------------------
+#------------------------------------------------------------------------------
+#------------------------------------------------------------------------------
+#------------------------------------------------------------------------------
+#------------------------------------------------------------------------------
+#------------------------------------------------------------------------------
+#------------------------------------------------------------------------------
+
+
+
     
+    # Fin du jeu
     fenetre_fin = tk.Tk() 
-    fenetre_fin.geometry("700x500") 
+    fenetre_fin.title("FIN DU JEU")
+    fenetre_fin.attributes('-fullscreen', True) 
+    fenetre_fin.configure(bg="black")
+
+# Configuration des lignes pour centrer les boutons
+    fenetre_fin.grid_rowconfigure(0, weight=1)
     fenetre_fin.grid_rowconfigure(1, weight=1)
-    fenetre_fin.grid_rowconfigure(2, weight=1)
-    bouton_rejouer = tk.Button(fenetre_fin, text= 'Rejouer ?', command=lambda : rejouer(1,fenetre_fin))
-    bouton_quitter = tk.Button(fenetre_fin, text='Quitter ?', command=lambda : rejouer(0,fenetre_fin))
-    bouton_rejouer.grid(row=0, column=0)
-    bouton_quitter.grid(row=1, column=0)
+    fenetre_fin.grid_columnconfigure(0, weight=1)
+
+# Définir une fonction pour centrer la fenêtre
+    def center_window(window, width, height):
+        screen_width = window.winfo_screenwidth()
+        screen_height = window.winfo_screenheight()
+        x = (screen_width/2) - (width/2)
+        y = (screen_height/2) - (height/2)
+        window.geometry('%dx%d+%d+%d' % (width, height, x, y))
+
+# Définition de la fonction pour rejouer ou quitter
+    def rejouer(ent, fen):
+        global jeu
+        if ent == 1:
+            jeu = True
+        else:
+            jeu = False
+        fen.destroy()  # Détruire la fenêtre de fin du jeu
+        if jeu:  # Si le jeu doit être rejoué
+            ouvrir_menu_principal()  # Ouvrir le menu principal
+
+    def ouvrir_menu_principal():
+        global fenetre_menu
+        fenetre_menu = tk.Tk()
+        fenetre_menu.title("MENU DU JEU")
+        fenetre_menu.attributes('-fullscreen', True)
+        fenetre_menu.configure(bg="black")
+        fenetre_menu.grid_columnconfigure(0, weight=1)
+        fenetre_menu.grid_columnconfigure(1, weight=1)
+        fenetre_menu.grid_columnconfigure(2, weight=1)
+        fenetre_menu.grid_columnconfigure(3, weight=1)
+        fenetre_menu.grid_rowconfigure(1, weight=1)
+        fenetre_menu.grid_rowconfigure(2, weight=1)
+        fenetre_menu.grid_rowconfigure(3, weight=1)
+        fenetre_menu.grid_rowconfigure(4, weight=1)
+        fenetre_menu.grid_rowconfigure(5, weight=1)
+        font_label = font.Font(size=30)
+        font_bouton = font.Font(size=20)
+        font_label2 = font.Font(size=20)
+        difficulte = 0
+
+        def aide():
+            regles_jeu = tk.Toplevel()
+            regles_jeu.title("LES REGLES DU JEU")
+            regles_jeu.attributes('-fullscreen', True)
+            regles_jeu.configure(bg="black")
+            regles_jeu.grid_columnconfigure(0, weight=1)
+            regles_jeu.grid_columnconfigure(1, weight=1)
+            regles_jeu.grid_columnconfigure(2, weight=1)
+            regles_jeu.grid_columnconfigure(3, weight=1)
+            regles_jeu.grid_rowconfigure(1, weight=1)
+            regles_jeu.grid_rowconfigure(2, weight=1)
+            regles_jeu.grid_rowconfigure(3, weight=1)
+            regles_jeu.grid_rowconfigure(4, weight=1)
+            regles_jeu.grid_rowconfigure(5, weight=1)
+
+            # Zone de texte avec les règles du jeu
+            regles = [
+                "LE JEU DU PENDU EST UN JEU DE SOCIÉTÉ OÙ LES JOUEURS DOIVENT DEVENIR UN MOT EN APPUYANT SUR LES LETTRES.",
+
+                "1. LES JOUEURS DOIVENT DEVENIR LE MOT EN PROPOSANT DES LETTRES UNE À UNE.",
+
+                "2. SI UNE LETTRE PROPOSÉE SE TROUVE DANS LE MOT, ELLE EST RÉVÉLÉE DANS LE MOT.",
+
+                "3. SI LA LETTRE PROPOSÉE N'EST PAS DANS LE MOT, UNE PARTIE DU DESSIN D’UN PENDU APPARAÎT.",
+
+                "4. LES JOUEURS ONT LE DROIT A 10 PROPOSITIONS FAUSSES AVANT QUE LE DESSIN NE SOIT COMPLET.",
+
+                "5. SI LE DESSIN DU PENDU EST ENTIER AVANT QUE LE MOT NE SOIT DEVINÉ, LA PARTIE EST PERDUE."
+            ]
+
+            # Affichage des règles
+            for i, regle in enumerate(regles):
+                zone_texte = tk.Label(regles_jeu, text=regle, font=("Helvetica", 15), fg="red", bg="black")
+                zone_texte.grid(row=i, column=0)
+
+            # Bouton pour fermer la fenêtre des règles
+            bouton_compris = tk.Button(regles_jeu, text="FERMER", command=regles_jeu.destroy, font=("Helvetica", 20), fg="red", bg="black")
+            bouton_compris.grid(row=3, column=1)
+
+            regles_jeu.mainloop()
+
+
+        def parse_line( ligne , sep, colonne, type) :
+            li = ligne.split(sep)
+            if type == "int" :
+                return(int(li[colonne]))
+            elif type == "str" :
+                return(li[colonne])
+        mote=""
+        chrge = False
+
+        jeu = False
+
+
+        def je(n = None):
+            global difficulte
+            if n != 1:
+                global jeu
+                jeu = True
+                difficulte=scroller.get()
+            fenetre_menu.destroy()
+
+
+        def mots(liste):
+            element = randint(0,len(liste)-1)
+            mot = liste[element]
+            return mot
+
+
+        score = 0
+        Label_1 = tk.Label(fenetre_menu, text="JEU DU PENDU", fg = "black", bg="red")
+        Label_1['font'] = font_label
+        Label_2 = tk.Label(fenetre_menu, text="DIFFICULTÉ :", bg="red")
+        Label_2['font'] = font_label2
+
+
+        scroller=tk.Scale(fenetre_menu ,from_=0, to=8, orient="horizontal", bg="red")
+
+
+        bouton_jouer = tk.Button(fenetre_menu, text="JOUER", command=lambda : je(), bg="red")
+        bouton_quitter = tk.Button(fenetre_menu, text="QUITTER", command=lambda : je(1), bg="red")
+        bouton_aide= tk.Button(fenetre_menu, text="AIDE", command=aide, bg="red")
+
+        bouton_jouer['font'] = font_bouton
+        bouton_quitter['font'] = font_bouton
+        bouton_aide['font'] = font_bouton
+
+
+        Label_1.place(relx=0.5, rely=0.2, anchor=tk.CENTER)
+        bouton_jouer.place(relx=0.5, rely=0.4, anchor=tk.CENTER)
+        bouton_quitter.place(relx=0.5, rely=0.6, anchor=tk.CENTER)
+        bouton_aide.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
+
+        Label_2.place(relx=0.3, rely=0.8, anchor=tk.CENTER)
+        scroller.place(relx=0.5, rely=0.8, anchor=tk.CENTER)
+
+                    
+        fenetre_menu.mainloop()
+
+
+# Création des boutons "Rejouer" et "Quitter"
+    bouton_rejouer = tk.Button(fenetre_fin, text='REJOUER', command=lambda: rejouer(1, fenetre_fin), font=("Helvetica", 30), bg="red")
+    bouton_quitter = tk.Button(fenetre_fin, text='QUITTER', command=lambda: rejouer(0, fenetre_fin), font=("Helvetica", 30), bg="red")
+
+# Centrage des boutons
+    bouton_rejouer.pack(side=tk.LEFT, padx=(400, 10), pady=10)
+    bouton_quitter.pack(side=tk.RIGHT, padx=(10, 400), pady=10)
+
+# Centrer la fenêtre
+    center_window(fenetre_fin, 700, 500)
 
     fenetre_fin.mainloop()
-    #
-    # -----------------------------------------------------
+
+
+    #------------------------------------------------------------------------------
+    #------------------------------------------------------------------------------
+    #------------------------------------------------------------------------------
+    #------------------------------------------------------------------------------
+    #------------------------------------------------------------------------------
+    #------------------------------------------------------------------------------
+    #------------------------------------------------------------------------------
