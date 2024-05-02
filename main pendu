@@ -63,19 +63,6 @@ def je(n = None):
         difficulte=scroller.get()
     fenetre_menu.destroy()
 
-def charger():
-    global mote
-    global score
-    global chrge
-    chrge = True
-    path = "C:/Users/Administrateur/Desktop/save.csv"
-    mode = "r"
-    csv_save = open(path, mode)
-    ligne = csv_save.readline()
-    mote = parse_line(ligne, ",", 0, "str")
-    score = parse_line(ligne, ",", 1, "int")
-    csv_save.close()
-    je()
 
 def mots(liste):
     element = randint(0,len(liste)-1)
@@ -98,15 +85,14 @@ bouton_aide['font'] = font_bouton
 bouton_aide.grid(sticky="nw")
 bouton_jouer = tk.Button(fenetre_menu, text="Jouer", command=lambda : je())
 bouton_quitter = tk.Button(fenetre_menu, text="Quitter", command=lambda : je(1))
-bouton_charger = tk.Button(fenetre_menu, text="Charger une partie ", command= charger)
 bouton_jouer['font'] = font_bouton
 bouton_quitter['font'] = font_bouton
-bouton_charger['font'] = font_bouton
+
 
 Label_1.grid(row = 1, column = 1)
 bouton_jouer.grid(row = 4, column = 1)
 bouton_quitter.grid(row = 5, column = 3)
-bouton_charger.grid(row = 0, column = 3)
+
 Label_2.grid(row=5, column=0)
 scroller.grid(row=5, column=1)
 
@@ -186,7 +172,7 @@ while jeu == True:
                 erreur+=1
                 creer_lignes(liste_ligne, erreur, canvas_personnage)
         else:
-            messagebox.showinfo(fenetre,message="Vous avez perdu !")
+            messagebox.showinfo(fenetre,message="Vous avez perdu {mot}!")
             fenetre.destroy()
 
 
@@ -282,7 +268,6 @@ while jeu == True:
         csv_save.write(mot+","+str(score)+"\n")
         csv_save.close()
     
-    bouton_save = tk.Button(fenetre, text="Sauvegarder", command=sauvegarder)
     
     def indications():
         global mot
@@ -457,7 +442,7 @@ while jeu == True:
     bouton_indication.grid(row = 5, column=7)
     button_pour_mot.grid(row= 7, column=7)
     label_score.grid(row=9,column=6)
-    bouton_save.grid(row = 9, column=7)
+
     bouton_quit.grid(row=14,column=10)
 
     fenetre.resizable(width = False, height = False)
