@@ -9,4 +9,4 @@ Nous avons répartis trois problématique à coder :
 
 Pour jouer, vous disposez d'un nombre limité de tentatives pour deviner le mot. Chaque erreur affiche une partie de la potence ; une fois la potence complète, vous avez perdu. Pour quitter, appuyez sur le bouton "Quitter". Les scores et les mots sont enregistrés dans le dossier de sauvegarde.
 
-La sauvgarde des scores et les mots sont enregistrer dans le dossier src Il faut importer le dossier "src" et le mettre dans le meme dossier que le programme "main.py"
+La sauvegarde des scores et les mots sont enregistrer dans le dossier src Il faut importer le dossier "src" et le mettre dans le meme dossier que le programme "main.py"
