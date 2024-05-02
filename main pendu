@@ -9,14 +9,14 @@ import tkinter.font as font
 def aide():
         
         regles_jeu = tk.Toplevel()
-        regles_jeu.geometry("800x300")
+        regles_jeu.geometry("700x175")
         regles_jeu.title("Regles du jeu")
-        zone_texte1 = tk.Label (regles_jeu, text = "Le jeu du pendu est un jeu de société où un joueur doit deviner un mot en appuyant sur les lettres. Les règles de base du jeu sont:")
-        zone_texte2= tk.Label (regles_jeu, text = "1. Le joueur doit deviner le mot en proposant des lettres une à une.")
-        zone_texte3 = tk.Label (regles_jeu, text = "2. Si une lettre proposée est dans le mot, elle est révélée dans le mot.")
+        zone_texte1 = tk.Label (regles_jeu, text = "Le jeu du pendu est un jeu de société où les joueurs doivent deviner un mot en appuyant sur les lettres. Les règles jeu sont:")
+        zone_texte2= tk.Label (regles_jeu, text = "1. Les joueurs doivent deviner le mot en proposant des lettres une à une.")
+        zone_texte3 = tk.Label (regles_jeu, text = "2. Si une lettre proposée se trouve dans le mot, elle est révélée dans le mot.")
         zone_texte4= tk.Label (regles_jeu, text = "3. Si la lettre proposée n'est pas dans le mot, une partie du dessin d’un pendu apparait.")
-        zone_texte5 = tk.Label (regles_jeu, text = "4. Le joueur a le droit a 10 propositions fausses avant que le dessin ne soit complété. Un seul indice est proposé")
-        zone_texte6 = tk.Label (regles_jeu, text = "5. Si le dessin du pendu est entierement dessine avant que le mot ne soit deviné, il perd. Sinon, il gagne.")
+        zone_texte5 = tk.Label (regles_jeu, text = "4. Les joueurs ont le droit a 10 propositions fausses avant que le dessin ne soit complet.")
+        zone_texte6 = tk.Label (regles_jeu, text = "5. Si le dessin du pendu est entier avant que le mot ne soit deviné, la partie est perdu.")
         zone_texte1.grid(sticky="nw")
         zone_texte2.grid(sticky="nw")
         zone_texte3.grid(sticky="nw")
@@ -86,14 +86,14 @@ def mots(liste):
 score = 0
 Label_1 = tk.Label(fenetre_menu, text="Jeu du Pendu", fg = "black")
 Label_1['font'] = font_label
-Label_2 = tk.Label(fenetre_menu, text="Choisis ta difficulté :")
+Label_2 = tk.Label(fenetre_menu, text="Difficulté :")
 Label_2['font'] = font_label2
 
 
 scroller=tk.Scale(fenetre_menu ,from_=0, to=8, orient="horizontal")
 
 
-bouton_aide= tk.Button(fenetre_menu, text="Aide", command=aide, bg="cyan")
+bouton_aide= tk.Button(fenetre_menu, text="Aide", command=aide, bg="red")
 bouton_aide['font'] = font_bouton
 bouton_aide.grid(sticky="nw")
 bouton_jouer = tk.Button(fenetre_menu, text="Jouer", command=lambda : je())
@@ -420,24 +420,6 @@ while jeu == True:
     boutonZ=tk.Button(fenetre,text="Z",command=lambda : lettre_dans_le_mot_ou_erreur("Z"))
 
     bouton_quit=tk.Button(fenetre,text='Quitter',command=lambda : fenetre.destroy())
-    
-
-    #print(mot_pointille)
-    #lettre_dans_le_mot("m")
-    #gprint(mot_pointille)
-
-
-    #canvas_personnage.create_line(100,400,400,400,fill="black")
-    #canvas_personnage.create_line(150,400,150,150,fill="black")
-    #canvas_personnage.create_line(150,150,300,150,fill="black")    
-    #canvas_personnage.create_line(200,150,150,200,fill="black")
-    #canvas_personnage.create_line(300,150,300,200,fill="black")
-    #canvas_personnage.create_oval(325,250,275,200,outline="black") # OVAL
-    #canvas_personnage.create_line(300,250,300,300,fill="black")
-    #canvas_personnage.create_line(300,275,325,275,fill="black")
-    #canvas_personnage.create_line(275,275,325,275,fill="black")
-    #canvas_personnage.create_line(300,300,325,320,fill="black")
-    #canvas_personnage.create_line(300,300,275,320,fill="black")
 
   
     boutonA.grid(column=0,row=10)
@@ -483,7 +465,7 @@ while jeu == True:
     fenetre.mainloop()
     
     fenetre_fin = tk.Tk() 
-    fenetre_fin.geometry("100x100+500+200") 
+    fenetre_fin.geometry("700x500") 
     fenetre_fin.grid_rowconfigure(1, weight=1)
     fenetre_fin.grid_rowconfigure(2, weight=1)
     bouton_rejouer = tk.Button(fenetre_fin, text= 'Rejouer ?', command=lambda : rejouer(1,fenetre_fin))
