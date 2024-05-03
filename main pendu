@@ -53,11 +53,11 @@ def aide():
 
     # Affichage des règles
     for i, regle in enumerate(regles):
-        zone_texte = tk.Label(regles_jeu, text=regle, font=("Helvetica", 15), fg="red", bg="black")
+        zone_texte = tk.Label(regles_jeu, text=regle, font=("Helvetica", 15), fg="white", bg="black")
         zone_texte.grid(row=i, column=0)
 
     # Bouton pour fermer la fenêtre des règles
-    bouton_compris = tk.Button(regles_jeu, text="FERMER", command=regles_jeu.destroy, font=("Helvetica", 20), fg="red", bg="black")
+    bouton_compris = tk.Button(regles_jeu, text="FERMER", command=regles_jeu.destroy, font=("Helvetica", 20), fg="white", bg="black")
     bouton_compris.grid(row=3, column=1)
 
     regles_jeu.mainloop()
@@ -91,18 +91,18 @@ def mots(liste):
 
 
 score = 0
-Label_1 = tk.Label(fenetre_menu, text=" JEU DU PENDU ", fg = "black", bg="red")
+Label_1 = tk.Label(fenetre_menu, text=" JEU DU PENDU ", fg = "black", bg="white")
 Label_1['font'] = font_label
-Label_2 = tk.Label(fenetre_menu, text="DIFFICULTÉ :", bg="red")
+Label_2 = tk.Label(fenetre_menu, text="DIFFICULTÉ :", bg="white")
 Label_2['font'] = font_label2
 
 
-scroller=tk.Scale(fenetre_menu ,from_=0, to=8, orient="horizontal", bg="red")
+scroller=tk.Scale(fenetre_menu ,from_=0, to=8, orient="horizontal", bg="white")
 
 
-bouton_jouer = tk.Button(fenetre_menu, text="JOUER", command=lambda : je(), bg="red")
-bouton_quitter = tk.Button(fenetre_menu, text="QUITTER", command=lambda : je(1), bg="red")
-bouton_aide= tk.Button(fenetre_menu, text="AIDE", command=aide, bg="red")
+bouton_jouer = tk.Button(fenetre_menu, text="JOUER", command=lambda : je(), bg="white")
+bouton_quitter = tk.Button(fenetre_menu, text="QUITTER", command=lambda : je(1), bg="white")
+bouton_aide= tk.Button(fenetre_menu, text="AIDE", command=aide, bg="white")
 
 bouton_jouer['font'] = font_bouton
 bouton_quitter['font'] = font_bouton
@@ -211,16 +211,16 @@ while jeu == True:
 
     mot_pointille = tiret()
 
-    canvas_personnage = tk.Canvas(fenetre, width=500, height=400, bg="red")
+    canvas_personnage = tk.Canvas(fenetre, width=500, height=400, bg="white")
 
     lettre_deja_donne = []
     lettre_deja_donne2 = []
-    label_erreur = tk.Label(fenetre, text="Vous avez fait "+str(erreur)+" erreur(s)", font=("Helvetica", 20), bg="red")
-    label_lettre_deja_utilise = tk.Label(fenetre, text="Vous n'avez utilisé aucune lettre ", font=("Helvetica", 20), bg="red")
+    label_erreur = tk.Label(fenetre, text="Vous avez fait "+str(erreur)+" erreur(s)", font=("Helvetica", 20), bg="white")
+    label_lettre_deja_utilise = tk.Label(fenetre, text="Vous n'avez utilisé aucune lettre ", font=("Helvetica", 20), bg="white")
 
-    entre = tk.Entry(fenetre,width=10, font=("Helvetica", 20), bg="red")
+    entre = tk.Entry(fenetre,width=10, font=("Helvetica", 20), bg="white")
 
-    button_pour_mot = tk.Button(fenetre, text="Deviner le mot ?", command= lambda:deviner_le_mt(entre.get()), font=("Helvetica", 20), bg="red")
+    button_pour_mot = tk.Button(fenetre, text="Deviner le mot ?", command= lambda:deviner_le_mt(entre.get()), font=("Helvetica", 20), bg="white")
 
     reussite = 0
     label_score = tk.Label(fenetre, text = "Score : "+str(score))
@@ -232,13 +232,13 @@ while jeu == True:
         cdc = ''
         for lettre in lettre_deja_donne2:
             cdc = cdc + lettre + ", " 
-        label_lettre_deja_utilise.config(text="Vous avez utilisé les lettres : "+cdc, font=("Helvetica", 20), bg="red")
+        label_lettre_deja_utilise.config(text="Vous avez utilisé les lettres : "+cdc, font=("Helvetica", 20), bg="white")
 
     def change_label_erreur():
         global erreur
         global score
         label_erreur.config(text="Vous avez fait "+str(erreur)+" erreur(s)")
-        label_score.config(text="Score : "+str(score), font=("Helvetica", 20), bg="red")
+        label_score.config(text="Score : "+str(score), font=("Helvetica", 20), bg="white")
         fenetre.after(10, change_label_erreur)
 
     change_label_erreur()
@@ -275,11 +275,11 @@ while jeu == True:
 
         # Affichage des règles
         for i, regle in enumerate(rgg2):
-            zone_texte = tk.Label(agagner, text=regle, font=("Helvetica", 30), fg="red", bg="black")
+            zone_texte = tk.Label(agagner, text=regle, font=("Helvetica", 30), fg="white", bg="black")
             zone_texte.grid(row=i, column=0)
 
         # Bouton pour fermer la fenêtre des règles
-        bouton_fermergg = tk.Button(agagner, text="FERMER", command=fenetre.destroy, font=("Helvetica", 20), fg="red", bg="black")
+        bouton_fermergg = tk.Button(agagner, text="FERMER", command=fenetre.destroy, font=("Helvetica", 20), fg="white", bg="black")
         bouton_fermergg.grid(row=3, column=1)
     
         agagner.mainloop()
@@ -316,11 +316,11 @@ while jeu == True:
 
         # Affichage des règles
         for i, regle in enumerate(rl2):
-            zone_texte = tk.Label(lose2, text=regle, font=("Helvetica", 30), fg="red", bg="black")
+            zone_texte = tk.Label(lose2, text=regle, font=("Helvetica", 30), fg="white", bg="black")
             zone_texte.grid(row=i, column=0)
 
         # Bouton pour fermer la fenêtre des règles
-        bouton_fermergg = tk.Button(lose2, text="FERMER", command=fenetre.destroy, font=("Helvetica", 20), fg="red", bg="black")
+        bouton_fermergg = tk.Button(lose2, text="FERMER", command=fenetre.destroy, font=("Helvetica", 20), fg="white", bg="black")
         bouton_fermergg.grid(row=3, column=1)
     
         lose2.mainloop()
@@ -342,7 +342,7 @@ while jeu == True:
     for i in range(len(mot_pointille)):
         mot_pointille_shw = ' '+mot_pointille[i]+mot_pointille_shw
 
-    label_pointille = tk.Label(fenetre, text=str(mot_pointille_shw), font=("Helvetica", 30), bg="red")
+    label_pointille = tk.Label(fenetre, text=str(mot_pointille_shw), font=("Helvetica", 30), bg="white")
 
     def change_label_pointille(mot):
         mot_pointille_shw = ""
@@ -399,18 +399,18 @@ while jeu == True:
 
         # Affichage des règles
         for i, regle in enumerate(ind2):
-            zone_texte = tk.Label(indications, text=regle, font=("Helvetica", 30), fg="red", bg="black")
+            zone_texte = tk.Label(indications, text=regle, font=("Helvetica", 30), fg="white", bg="black")
             zone_texte.grid(row=i, column=0)
 
         # Bouton pour fermer la fenêtre des règles
-        bouton_fermergg = tk.Button(indications, text="FERMER", command=indications.destroy, font=("Helvetica", 20), fg="red", bg="black")
+        bouton_fermergg = tk.Button(indications, text="FERMER", command=indications.destroy, font=("Helvetica", 20), fg="white", bg="black")
         bouton_fermergg.grid(row=3, column=1)
     
         indications.mainloop()
 
 
         
-    bouton_indication = tk.Button(fenetre, command = indications,text="Indice pour le mot", font=("Helvetica", 20), bg="red")
+    bouton_indication = tk.Button(fenetre, command = indications,text="Indice pour le mot", font=("Helvetica", 20), bg="white")
 
     def lettre_dans_le_mot_ou_erreur(lettre):
         global mot
@@ -506,34 +506,34 @@ while jeu == True:
 
 
             
-    boutonA=tk.Button(fenetre,text="A",command=lambda : lettre_dans_le_mot_ou_erreur("A"), font=("Helvetica", 15), bg="red")
-    boutonB=tk.Button(fenetre,text="B",command=lambda : lettre_dans_le_mot_ou_erreur("B"), font=("Helvetica", 15), bg="red")
-    boutonC=tk.Button(fenetre,text="C",command=lambda : lettre_dans_le_mot_ou_erreur("C"), font=("Helvetica", 15), bg="red")
-    boutonD=tk.Button(fenetre,text="D",command=lambda : lettre_dans_le_mot_ou_erreur("D"), font=("Helvetica", 15), bg="red")
-    boutonE=tk.Button(fenetre,text="E",command=lambda : lettre_dans_le_mot_ou_erreur("E"), font=("Helvetica", 15), bg="red")
-    boutonF=tk.Button(fenetre,text="F",command=lambda : lettre_dans_le_mot_ou_erreur("F"), font=("Helvetica", 15), bg="red")
-    boutonG=tk.Button(fenetre,text="G",command=lambda : lettre_dans_le_mot_ou_erreur("G"), font=("Helvetica", 15), bg="red")
-    boutonH=tk.Button(fenetre,text="H",command=lambda : lettre_dans_le_mot_ou_erreur("H"), font=("Helvetica", 15), bg="red")
-    boutonI=tk.Button(fenetre,text="I",command=lambda : lettre_dans_le_mot_ou_erreur("I"), font=("Helvetica", 15), bg="red")
-    boutonJ=tk.Button(fenetre,text="J",command=lambda : lettre_dans_le_mot_ou_erreur("J"), font=("Helvetica", 15), bg="red")
-    boutonK=tk.Button(fenetre,text="K",command=lambda : lettre_dans_le_mot_ou_erreur("K"), font=("Helvetica", 15), bg="red")
-    boutonL=tk.Button(fenetre,text="L",command=lambda : lettre_dans_le_mot_ou_erreur("L"), font=("Helvetica", 15), bg="red")
-    boutonM=tk.Button(fenetre,text="M",command=lambda : lettre_dans_le_mot_ou_erreur("M"), font=("Helvetica", 15), bg="red")
-    boutonN=tk.Button(fenetre,text="N",command=lambda : lettre_dans_le_mot_ou_erreur("N"), font=("Helvetica", 15), bg="red")
-    boutonO=tk.Button(fenetre,text="O",command=lambda : lettre_dans_le_mot_ou_erreur("O"), font=("Helvetica", 15), bg="red")
-    boutonP=tk.Button(fenetre,text="P",command=lambda : lettre_dans_le_mot_ou_erreur("P"), font=("Helvetica", 15), bg="red")
-    boutonQ=tk.Button(fenetre,text="Q",command=lambda : lettre_dans_le_mot_ou_erreur("Q"), font=("Helvetica", 15), bg="red")
-    boutonR=tk.Button(fenetre,text="R",command=lambda : lettre_dans_le_mot_ou_erreur("R"), font=("Helvetica", 15), bg="red")
-    boutonS=tk.Button(fenetre,text="S",command=lambda : lettre_dans_le_mot_ou_erreur("S"), font=("Helvetica", 15), bg="red")
-    boutonT=tk.Button(fenetre,text="T",command=lambda : lettre_dans_le_mot_ou_erreur("T"), font=("Helvetica", 15), bg="red")
-    boutonU=tk.Button(fenetre,text="U",command=lambda : lettre_dans_le_mot_ou_erreur("U"), font=("Helvetica", 15), bg="red")
-    boutonV=tk.Button(fenetre,text="V",command=lambda : lettre_dans_le_mot_ou_erreur("V"), font=("Helvetica", 15), bg="red")
-    boutonW=tk.Button(fenetre,text="W",command=lambda : lettre_dans_le_mot_ou_erreur("W"), font=("Helvetica", 15), bg="red")
-    boutonX=tk.Button(fenetre,text="X",command=lambda : lettre_dans_le_mot_ou_erreur("X"), font=("Helvetica", 15), bg="red")
-    boutonY=tk.Button(fenetre,text="Y",command=lambda : lettre_dans_le_mot_ou_erreur("Y"), font=("Helvetica", 15), bg="red")
-    boutonZ=tk.Button(fenetre,text="Z",command=lambda : lettre_dans_le_mot_ou_erreur("Z"), font=("Helvetica", 15), bg="red")
+    boutonA=tk.Button(fenetre,text="A",command=lambda : lettre_dans_le_mot_ou_erreur("A"), font=("Helvetica", 15), bg="white")
+    boutonB=tk.Button(fenetre,text="B",command=lambda : lettre_dans_le_mot_ou_erreur("B"), font=("Helvetica", 15), bg="white")
+    boutonC=tk.Button(fenetre,text="C",command=lambda : lettre_dans_le_mot_ou_erreur("C"), font=("Helvetica", 15), bg="white")
+    boutonD=tk.Button(fenetre,text="D",command=lambda : lettre_dans_le_mot_ou_erreur("D"), font=("Helvetica", 15), bg="white")
+    boutonE=tk.Button(fenetre,text="E",command=lambda : lettre_dans_le_mot_ou_erreur("E"), font=("Helvetica", 15), bg="white")
+    boutonF=tk.Button(fenetre,text="F",command=lambda : lettre_dans_le_mot_ou_erreur("F"), font=("Helvetica", 15), bg="white")
+    boutonG=tk.Button(fenetre,text="G",command=lambda : lettre_dans_le_mot_ou_erreur("G"), font=("Helvetica", 15), bg="white")
+    boutonH=tk.Button(fenetre,text="H",command=lambda : lettre_dans_le_mot_ou_erreur("H"), font=("Helvetica", 15), bg="white")
+    boutonI=tk.Button(fenetre,text="I",command=lambda : lettre_dans_le_mot_ou_erreur("I"), font=("Helvetica", 15), bg="white")
+    boutonJ=tk.Button(fenetre,text="J",command=lambda : lettre_dans_le_mot_ou_erreur("J"), font=("Helvetica", 15), bg="white")
+    boutonK=tk.Button(fenetre,text="K",command=lambda : lettre_dans_le_mot_ou_erreur("K"), font=("Helvetica", 15), bg="white")
+    boutonL=tk.Button(fenetre,text="L",command=lambda : lettre_dans_le_mot_ou_erreur("L"), font=("Helvetica", 15), bg="white")
+    boutonM=tk.Button(fenetre,text="M",command=lambda : lettre_dans_le_mot_ou_erreur("M"), font=("Helvetica", 15), bg="white")
+    boutonN=tk.Button(fenetre,text="N",command=lambda : lettre_dans_le_mot_ou_erreur("N"), font=("Helvetica", 15), bg="white")
+    boutonO=tk.Button(fenetre,text="O",command=lambda : lettre_dans_le_mot_ou_erreur("O"), font=("Helvetica", 15), bg="white")
+    boutonP=tk.Button(fenetre,text="P",command=lambda : lettre_dans_le_mot_ou_erreur("P"), font=("Helvetica", 15), bg="white")
+    boutonQ=tk.Button(fenetre,text="Q",command=lambda : lettre_dans_le_mot_ou_erreur("Q"), font=("Helvetica", 15), bg="white")
+    boutonR=tk.Button(fenetre,text="R",command=lambda : lettre_dans_le_mot_ou_erreur("R"), font=("Helvetica", 15), bg="white")
+    boutonS=tk.Button(fenetre,text="S",command=lambda : lettre_dans_le_mot_ou_erreur("S"), font=("Helvetica", 15), bg="white")
+    boutonT=tk.Button(fenetre,text="T",command=lambda : lettre_dans_le_mot_ou_erreur("T"), font=("Helvetica", 15), bg="white")
+    boutonU=tk.Button(fenetre,text="U",command=lambda : lettre_dans_le_mot_ou_erreur("U"), font=("Helvetica", 15), bg="white")
+    boutonV=tk.Button(fenetre,text="V",command=lambda : lettre_dans_le_mot_ou_erreur("V"), font=("Helvetica", 15), bg="white")
+    boutonW=tk.Button(fenetre,text="W",command=lambda : lettre_dans_le_mot_ou_erreur("W"), font=("Helvetica", 15), bg="white")
+    boutonX=tk.Button(fenetre,text="X",command=lambda : lettre_dans_le_mot_ou_erreur("X"), font=("Helvetica", 15), bg="white")
+    boutonY=tk.Button(fenetre,text="Y",command=lambda : lettre_dans_le_mot_ou_erreur("Y"), font=("Helvetica", 15), bg="white")
+    boutonZ=tk.Button(fenetre,text="Z",command=lambda : lettre_dans_le_mot_ou_erreur("Z"), font=("Helvetica", 15), bg="white")
 
-    bouton_quit=tk.Button(fenetre,text='QUITTER',command=lambda : fenetre.destroy(), font=("Helvetica", 20), bg="red")
+    bouton_quit=tk.Button(fenetre,text='QUITTER',command=lambda : fenetre.destroy(), font=("Helvetica", 20), bg="white")
 
   
     boutonA.grid(column=0,row=13)
@@ -673,11 +673,11 @@ while jeu == True:
 
             # Affichage des règles
             for i, regle in enumerate(regles):
-                zone_texte = tk.Label(regles_jeu, text=regle, font=("Helvetica", 15), fg="red", bg="black")
+                zone_texte = tk.Label(regles_jeu, text=regle, font=("Helvetica", 15), fg="white", bg="black")
                 zone_texte.grid(row=i, column=0)
 
             # Bouton pour fermer la fenêtre des règles
-            bouton_compris = tk.Button(regles_jeu, text="FERMER", command=regles_jeu.destroy, font=("Helvetica", 20), fg="red", bg="black")
+            bouton_compris = tk.Button(regles_jeu, text="FERMER", command=regles_jeu.destroy, font=("Helvetica", 20), fg="white", bg="black")
             bouton_compris.grid(row=3, column=1)
 
             regles_jeu.mainloop()
@@ -711,18 +711,18 @@ while jeu == True:
 
 
         score = 0
-        Label_1 = tk.Label(fenetre_menu, text="JEU DU PENDU", fg = "black", bg="red")
+        Label_1 = tk.Label(fenetre_menu, text="JEU DU PENDU", fg = "black", bg="white")
         Label_1['font'] = font_label
-        Label_2 = tk.Label(fenetre_menu, text="DIFFICULTÉ :", bg="red")
+        Label_2 = tk.Label(fenetre_menu, text="DIFFICULTÉ :", bg="white")
         Label_2['font'] = font_label2
 
 
-        scroller=tk.Scale(fenetre_menu ,from_=0, to=8, orient="horizontal", bg="red")
+        scroller=tk.Scale(fenetre_menu ,from_=0, to=8, orient="horizontal", bg="white")
 
 
-        bouton_jouer = tk.Button(fenetre_menu, text="JOUER", command=lambda : je(), bg="red")
-        bouton_quitter = tk.Button(fenetre_menu, text="QUITTER", command=lambda : je(1), bg="red")
-        bouton_aide= tk.Button(fenetre_menu, text="AIDE", command=aide, bg="red")
+        bouton_jouer = tk.Button(fenetre_menu, text="JOUER", command=lambda : je(), bg="white")
+        bouton_quitter = tk.Button(fenetre_menu, text="QUITTER", command=lambda : je(1), bg="white")
+        bouton_aide= tk.Button(fenetre_menu, text="AIDE", command=aide, bg="white")
 
         bouton_jouer['font'] = font_bouton
         bouton_quitter['font'] = font_bouton
@@ -742,8 +742,8 @@ while jeu == True:
 
 
 # Création des boutons "Rejouer" et "Quitter"
-    bouton_rejouer = tk.Button(fenetre_fin, text='REJOUER', command=lambda: rejouer(1, fenetre_fin), font=("Helvetica", 30), bg="red")
-    bouton_quitter = tk.Button(fenetre_fin, text='QUITTER', command=lambda: rejouer(0, fenetre_fin), font=("Helvetica", 30), bg="red")
+    bouton_rejouer = tk.Button(fenetre_fin, text='REJOUER', command=lambda: rejouer(1, fenetre_fin), font=("Helvetica", 30), bg="white")
+    bouton_quitter = tk.Button(fenetre_fin, text='QUITTER', command=lambda: rejouer(0, fenetre_fin), font=("Helvetica", 30), bg="white")
 
 # Centrage des boutons
     bouton_rejouer.pack(side=tk.LEFT, padx=(400, 10), pady=10)
