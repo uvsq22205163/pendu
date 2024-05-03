@@ -17,11 +17,17 @@ Possibilité de deviner le mot : Le joueur peut également tenter de deviner dir
 
 Comment jouer :
 -Lancez le jeu en exécutant le fichier main pendu.
+
 -Choisissez la difficulté à l'aide de la barre de défilement.
+
 -Cliquez sur le bouton "Jouer" pour commencer la partie.
+
 -Devinez les lettres en cliquant sur les boutons correspondants.
+
 -Utilisez le champ de texte pour deviner le mot complet.
+
 -Essayez de deviner le mot avant que le dessin du pendu ne soit complet.
+
 -Consultez votre score et réessayez autant de fois que vous le souhaitez.
 
 
