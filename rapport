@@ -6,11 +6,10 @@ Création de la fenêtre de menu qui contient 4 éléments (aide, quitter, jouer
 Création du GitHub.
 Création des listes de mots, des fonctions des listes et de l'affichage du pendu.
 Fonction pour deviner le mot en fonction du nombre d'erreurs (ce qui se passe après).
-Création de la fenêtre de jeu qui contient des boutons et un titre.
 
 Rapport d'Isaac :
 
-Création de la fonction gg3 (qui affiche quand on a gagné) et une fonction quand tu as perdu.
+Création de la fenêtre de jeu qui contient des boutons et un titre.
 Fonction qui crée des lignes et des pointillés et une fonction qui indique l'indice.
 Création de la fonction bouton des lettres.
 
@@ -18,4 +17,4 @@ Rapport de Fouad :
 
 Bouton des lettres.
 Position de tout ce qu'il y a dans la fenêtre de jeu.
-Création de la fenêtre de fin avec le bouton rejouer ou la fonction amenant de nouveau à la fenêtre du menu.
+Création de la fenêtre de fin avec le bouton rejouer ou la fonction amenant à une nouvelle partie.
